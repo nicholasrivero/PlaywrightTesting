@@ -1,10 +1,13 @@
 {
-  "name": "qa-engineer-prep",
+  "name": "playwright-testing",
   "version": "1.0.0",
-  "description": "A project to prepare for a QA Engineer role",
+  "description": "A project to prepare for a QA Engineer role with Playwright testing setup",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "coverage": "nyc --reporter=html npx playwright test",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "keywords": [],
   "author": "Your Name",
@@ -13,6 +16,10 @@
     "@playwright/test": "^1.45.3",
     "eslint": "^7.32.0",
     "jest": "^27.2.5",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "nyc": "^15.1.0",
+    "playwright": "^1.12.3",
+    "playwright-html-reporter": "^1.0.0",
+    "jsdoc": "^3.6.7"
   }
 }

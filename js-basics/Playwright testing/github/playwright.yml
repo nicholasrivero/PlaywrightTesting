@@ -1,0 +1,46 @@
+name: Playwright Tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install Playwright browsers
+      run: npx playwright install
+
+    - name: Run lint
+      run: npm run lint
+
+    - name: Run Playwright tests
+      run: npm test
+
+    - name: Run coverage
+      run: npm run coverage
+
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage-report
+        path: ./coverage
+
+    - name: Generate documentation
+      run: npm run docs
+
+    - name: Upload documentation
+      uses: actions/upload-artifact@v2
+      with:
+        name: documentation
+        path: ./out
